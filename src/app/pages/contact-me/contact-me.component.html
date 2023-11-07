@@ -1,0 +1,103 @@
+<div class="d-flex justify-content-center mt-5">
+  <div class="form_container">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="text-center mb-4">
+        <h1 class="mb-3">Contact Me</h1>
+        <div class="form-floating mb-3">
+          <input
+            [class.is-invalid]=" contactForm.get('email')?.touched && contactForm.get('email')?.invalid"
+            type="email"
+            formControlName="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com" />
+          <div
+            *ngIf="contactForm.get('email')?.errors?.['required']"
+            class="invalid-feedback">
+            Please Enter Mail
+          </div>
+          <div
+            *ngIf="contactForm.get('email')?.errors?.['email']" class="invalid-feedback">
+            Invalid Email Address
+          </div>
+          <label for="floatingInput">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            [class.is-invalid]="
+            contactForm.get('firstName')?.touched && contactForm.get('firstName')?.invalid"
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"/>
+          <div
+            *ngIf="contactForm.get('firstName')?.errors?.['required']"
+            class="invalid-feedback"> Please Enter First Name
+          </div>
+          <div
+            *ngIf="contactForm.get('firstName')?.errors?.['pattern']"
+            class="invalid-feedback"> Pleace Enter Only Chars With No Digits
+          </div>
+          <label for="floatingInput">First Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            [class.is-invalid]="
+              contactForm.get('lastName')?.touched && contactForm.get('lastName')?.invalid"
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Enter Your First Name" />
+          <div
+            *ngIf="contactForm.get('lastName')?.errors?.['required']"
+            class="invalid-feedback" > Please Enter Last Name
+          </div>
+          <div
+            *ngIf="contactForm.get('lastName')?.errors?.['pattern']" class="invalid-feedback" >
+            Pleace Enter Only Chars With No Digits
+          </div>
+          <label for="floatingInput">Last Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            [class.is-invalid]="
+            contactForm.get('phoneNumber')?.touched && contactForm.get('phoneNumber')?.invalid"
+            type="text"
+            appPhoneMask
+            formControlName="phoneNumber"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Enter Your Phone Number" />
+          <div
+            *ngIf="contactForm.get('phoneNumber')?.errors?.['required']"
+            class="invalid-feedback"> Please Enter Phone Number
+          </div>
+          <div
+            *ngIf="contactForm.get('phoneNumber')?.errors?.['pattern']"
+            class="invalid-feedback" > Please Enter Only Numbers
+          </div>
+          <div
+            *ngIf="contactForm.get('phoneNumber')?.errors?.['min']"
+            class="invalid-feedback"> Minimum 9 Chars
+          </div>
+          <div
+            *ngIf="contactForm.get('phoneNumber')?.errors?.['max']"
+            class="invalid-feedback" > Maximum 10 Chars
+          </div>
+          <label for="floatingInput">Phone Number</label>
+        </div>
+        <div class="d-grid mt-5">
+          <button *ngIf="!(cvService.succsessSource | async)"
+            [disabled]="!contactForm.valid"
+            class="btn btn-primary mt-2" type="submit" id="button"> Send
+          </button>
+          <div class="border align-items-center border-success rounded text-success"  style="  width: 300px; height: 45px;" *ngIf="(cvService.succsessSource | async)">
+            <i class="fa fa-check" aria-hidden="true"></i>Form has been successfully sent
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

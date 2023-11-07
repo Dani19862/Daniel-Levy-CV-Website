@@ -1,0 +1,10 @@
+.footer {
+    position: fixed;
+    clear: both;
+    /* position: relative; */
+    background-color: thistle;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}   
+
