@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormalEducationComponent } from './pages/formal-education/formal-education.component';
 import { ExperienceComponent } from './pages/experience/experience.component';
 import { ContactMeComponent } from './pages/contact-me/contact-me.component';
-import { HomeModule } from './pages/Home/home.module';
+
 import { FooterComponent } from './footer/footer.component';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HomeModule,
+    HomeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
